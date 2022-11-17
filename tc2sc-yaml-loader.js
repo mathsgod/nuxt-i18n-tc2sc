@@ -1,5 +1,4 @@
-ts2sc = require("./tc2sc.js").default;
-
+tc2sc = require("./tc2sc.js");
 
 module.exports = function (source) {
     //explode the source
