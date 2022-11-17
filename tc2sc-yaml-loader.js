@@ -1,4 +1,4 @@
-import tc2sc from "./tc2sc.js";
+ts2sc = require("./tc2sc.js").default;
 
 
 module.exports = function (source) {
