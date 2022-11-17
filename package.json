@@ -1,6 +1,6 @@
 {
   "name": "nuxt-i18n-tc2sc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A module used auto generate simplified chinese (sc) from traditional chinese (tc) in nuxt-i18n",
   "main": "index.js",
   "scripts": {
