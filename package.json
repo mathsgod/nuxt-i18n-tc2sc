@@ -3,8 +3,9 @@
   "version": "1.0.3",
   "description": "A module used auto generate simplified chinese (sc) from traditional chinese (tc) in nuxt-i18n",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node test.js",
     "release": "npm version patch && npm publish"
   },
   "author": "Raymond Chong <mathsgod@yahoo.com>",
