@@ -1,7 +1,7 @@
 
 export default function (moduleOptions) {
 
-    this.extendBuid((config) => {
+    this.extendBuild((config) => {
         config.module.rules.push({
             test: /\.ya?ml$/,
             type: 'javascript/auto',
