@@ -1,4 +1,5 @@
 # nuxt-i18n-tc2sc
+A Nuxt.js module for automatically converting Traditional Chinese to Simplified Chinese.
 
 ## Install
 
