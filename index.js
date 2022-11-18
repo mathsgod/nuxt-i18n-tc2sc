@@ -5,7 +5,7 @@ export default function (moduleOptions) {
         config.module.rules.push({
             test: /\.ya?ml$/,
             type: 'javascript/auto',
-            loader: require.resolve("./tc2sc-yaml-loader.js"),
+            loader: require.resolve("./tc2sc-loader.js"),
         })
     });
 }
