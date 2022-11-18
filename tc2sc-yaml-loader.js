@@ -1,31 +1,34 @@
 tc2sc = require("./tc2sc.js");
 
 module.exports = function (source) {
-    //explode the source
-    const lines = source.split(/\r?\n/g);
-    let line = lines[2];
+    //get the component from source
 
+    let module = {
+        exports: {}
+    }
     let Component = {
         options: {
             __i18n: []
         }
     }
-    eval(line);
+
+    eval(source);
+    module.exports(Component);
 
     //convert to json
     //eval the json
+    if (Component.options.__i18n.length === 0) {
+        return source;
+    }
 
     const json = JSON.parse(Component.options.__i18n[0]);
-
-    json.sc = json.sc ?? {};
 
     if (!json.tc) {
         return source;
     }
 
-
     //convert tra to simplified chinese
-    let sc = Object.assign({}, json.sc);
+    let sc = Object.assign({}, json.sc ?? {});
 
     try {
         Object.entries(json.tc).forEach(([key, value]) => {
@@ -34,8 +37,8 @@ module.exports = function (source) {
             }
         });
     } catch (error) {
-        this.emitError(err.message);
-        this.callback(err);
+        this.emitError(error.message);
+        this.callback(error);
     }
 
     json.sc = sc;
