@@ -7,7 +7,16 @@ export default function (moduleOptions) {
             type: 'javascript/auto',
             loader: require.resolve("./tc2sc-loader.js"),
         })
+
+        config.module.rules.push({
+            resourceQuery: /blockType=i18n/,
+            type: 'javascript/auto',
+            loader: require.resolve("./tc2sc-loader.js"),
+        })
+
+
     });
+
 }
 
 module.exports.meta = require('./package.json')
