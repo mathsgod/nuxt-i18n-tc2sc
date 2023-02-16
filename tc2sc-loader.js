@@ -20,7 +20,7 @@ module.exports = function (source) {
                 if (!to[key]) {
                     to[key] = {};
                 }
-                merge(to[key], value);
+                to[key] = merge(to[key], value);
             } else {
                 to[key] = value;
             }
