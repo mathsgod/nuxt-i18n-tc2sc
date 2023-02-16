@@ -1,6 +1,33 @@
 tc2sc = require("./tc2sc.js");
 
 module.exports = function (source) {
+
+    let tran = (obj) => {
+        let s = {};
+        Object.entries(obj).forEach(([key, value]) => {
+            if (typeof value === "object") {
+                s[key] = tran(value);
+            } else {
+                s[key] = tc2sc(value);
+            }
+        });
+        return s;
+    };
+
+    let merge = (to, from) => {
+        Object.entries(from).forEach(([key, value]) => {
+            if (typeof value === "object") {
+                if (!to[key]) {
+                    to[key] = {};
+                }
+                merge(to[key], value);
+            } else {
+                to[key] = value;
+            }
+        });
+        return to;
+    }
+
     //get the component from source
 
     let module = {
@@ -31,11 +58,9 @@ module.exports = function (source) {
     let sc = Object.assign({}, json.sc ?? {});
 
     try {
-        Object.entries(json.tc).forEach(([key, value]) => {
-            if (!sc[key]) {
-                sc[key] = tc2sc(value);
-            }
-        });
+        let data = tran(json.tc);
+        sc = merge(data, sc);
+
     } catch (error) {
         this.emitError(error.message);
         this.callback(error);
